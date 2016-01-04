@@ -5,13 +5,6 @@ function setBlack(px){
     px.setBlue(0);
     return px;
 }
-function swapRedGreen(pixel){
-	var newGreen = pixel.getRed();
-	var newRed = pixel.getGreen();
-	pixel.setGreen(newGreen);
-	pixel.setRed(newRed);
-	return pixel;
-}
 function switchRedGreen(px){
     var pxGreen, pxRed;
     pxGreen = px.getRed();
@@ -23,19 +16,19 @@ function switchRedGreen(px){
 }
 var image = new SimpleImage("lion.jpg");
 
-function pixelOnEdgeDifferentThicknesses(x,y,borderValueX,borderValueY){
-        if (x < borderValueX){
-           return true;
-        }
-        if (y < borderValueY){
-            return true;
-        }
-        if (x >= image.getWidth()-borderValueX){
-        return true;
-        }
-        if (y >= image.getHeight()-borderValueY){
-          return true;
-        }
+function pixelOnEdgeDifferentThicknesses(x,y,vWidth,hWidth){
+  
+     if (x < vWidth) return true;	
+     if (y < hWidth) return true;	
+     if (x >= image.getWidth() - vWidth) return true;	
+     if (y >= image.getHeight() - hWidth) return true;	
+     return false;
+}
+function pixelOnVerticalEdge(pixel, image, borderWidth) {
+     var x = pixel.getX();	
+     if (x < borderWidth) return true;	
+     if (x >= image.getWidth() - borderWidth) return true;
+     return false;
 }
 
 function randomBorder(borderValueX,borderValueY, image)
@@ -43,7 +36,7 @@ function randomBorder(borderValueX,borderValueY, image)
     for (var pixel of image.values()) {
         var x = pixel.getX();
         var y = pixel.getY();
-        if(pixelOnEdgeDifferentThicknesses(x,y,5,15, image)){
+        if(pixelOnEdgeDifferentThicknesses(x,y,5,15,image)){
             pixel = setBlack(pixel);
         }
     }
