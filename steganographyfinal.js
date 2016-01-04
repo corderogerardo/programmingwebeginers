@@ -48,6 +48,8 @@ function newpv(p,q){
         print("Error: sum of values exceeds 255");
     }
 }
+
+
 function combine(img1,img2){
     var finalImage = new SimpleImage(img1.getWidth(), img2.getHeight());
     for (var impx of img1.values()){

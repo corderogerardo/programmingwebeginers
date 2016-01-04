@@ -50,7 +50,9 @@ function newpv(p,q){
 }
 function combine(img1,img2){
     var finalImage = new SimpleImage(img1.getWidth(), img2.getHeight());
+    
     for (var impx of img1.values()){
+
         var impxx = impx.getX();
         var impxy = impx.getY();
         
