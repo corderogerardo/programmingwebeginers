@@ -49,8 +49,7 @@ for (var px of OrgImage.values()) {
      var pxVal = NewImage.getPixel(x,y);
     
      if (y <= (0 - 10*Math.sin(x/5.8))  || y > h-(10 - 500*Math.sin(x/5.85))) {
-         // RGB color below  is a red color
-      
+             
          pxVal.setRed(0); 
          pxVal.setGreen(0);
          pxVal.setBlue(27/2);
